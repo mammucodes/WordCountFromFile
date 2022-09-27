@@ -19,6 +19,11 @@ public class wordCountUsingMap {
 	public static void main(String[] args) throws IOException {
 		FileReader fr = new FileReader("C:\\Users\\91779\\OneDrive\\Desktop\\mammuw3schoolsfiles\\searchWordCount.txt");
 		BufferedReader br = new BufferedReader(fr);
+
+		searchWordCount(br);
+	}
+
+	public static void searchWordCount(BufferedReader br) throws IOException {
 		int count = 0;
 		String line = br.readLine();
 		String[] words;
@@ -56,35 +61,29 @@ public class wordCountUsingMap {
 	public static void searchWordCount() {
 		Integer count = 0;
 		System.out.println("enter the word you want to search");
-		   String searchWord = sc.nextLine();
-		   String[] searchWords = { 
-					searchWord + "," , 
-					searchWord , 
-					"\"" + searchWord ,
-					"\"" + searchWord + "," ,
-					searchWord + "\"" 
-					};
-		   
-		   for(String wordSearch :searchWords)
-		   {
-			   
-	       Integer  tempCount = mapData.get(wordSearch.toLowerCase());
-	       //check if  first time tempCount is null
-	       if(tempCount==null) 
-	    	   tempCount =0;
-	       count +=tempCount;
-	       
-		   }
-		  
+		String searchWord = sc.nextLine();
+		String[] searchWords = { searchWord + ",", searchWord, "\"" + searchWord, "\"" + searchWord + ",",
+				searchWord + "\"" };
+
+		for (String wordSearch : searchWords) {
+
+			Integer tempCount = mapData.get(wordSearch.toLowerCase());
+			// check if first time tempCount is null
+			if (tempCount == null)
+				tempCount = 0;
+			count += tempCount;
+
+		}
+
 //		System.out.println("enter the word you want to search");
 //		String searchWord = sc.nextLine();
 //
 //		Integer count = mapData.get(searchWord.toLowerCase());
 
-		if (count!=null&&count>0) {
-			System.out.println("found the given search word "+"\"" + searchWord +"\""+ "  : " + count + " times");
+		if (count != null && count > 0) {
+			System.out.println("found the given search word " + "\"" + searchWord + "\"" + "  : " + count + " times");
 		} else {
-			System.out.println("not found given word " + "\"" + searchWord +"\"");
+			System.out.println("not found given word " + "\"" + searchWord + "\"");
 		}
 	}
 
